@@ -107,7 +107,7 @@ export default function Dashboard() {
         <div className="mx-16 grid md:grid-cols-2 2xl:grid-cols-3">
           {
             details?.map((d)=>{
-              return  <Card  handleClick={handleClick} loginId={d._id} deviceName={d.platform+" "+d.browser} time={d.date+" "+d.time} current={d._id==loginId?true:false}/>
+              return  <Card  key={d._id} handleClick={handleClick} loginId={d._id} deviceName={d.platform+" "+d.browser} time={d.date+" "+d.time} current={d._id==loginId?true:false}/>
             })
           }
       
