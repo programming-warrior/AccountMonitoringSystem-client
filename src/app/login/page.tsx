@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next/Link';
+import Link from 'next/link';
 import { FormEvent, useState,useEffect } from 'react';
 import Button from '@/components/Button';
 import axios from 'axios';
