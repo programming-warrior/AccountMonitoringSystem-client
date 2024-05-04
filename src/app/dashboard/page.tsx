@@ -87,8 +87,8 @@ export default function Dashboard() {
 
 
   const handleClick=useCallback((e: React.MouseEvent<HTMLButtonElement>)=>{
-    const target:EventTarget=e.target;
-    const deviceLoggedId:string=target.dataset.login;
+    const target=e.target as HTMLElement;
+    const deviceLoggedId:string=target.dataset.login || '';
     const data={
       event:'sign-out',
       message:{
