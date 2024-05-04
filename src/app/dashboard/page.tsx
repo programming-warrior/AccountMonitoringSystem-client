@@ -20,13 +20,14 @@ export default function Dashboard() {
   const router=useRouter();
   const [loginId,setLoginId]=useState<string>("");
 
+
   //fetch all the login details
   useEffect(()=>{
       (async function(){
         const userId=localStorage.getItem('userId');
         if(!userId) return router.push('/login');
         setLoginId(localStorage.getItem('loginId') || '');
-        const res=await axios.get(`http://localhost:8000/api/v1/fetch/${userId}`);
+        const res=await axios.get(`${process.env.NEXT_BACKEND_URL}/api/v1/fetch/${userId}`);
         setDetails(res.data);
       })()
   },[])
@@ -41,7 +42,7 @@ export default function Dashboard() {
       if(socket.current===null){
         const token: string = localStorage.getItem('token') || "";
         if(!token) return router.push('/login');
-        const ws = new WebSocket('ws://localhost:8000', ['Authorization', token]);
+        const ws = new WebSocket(`${process.env.NEXT_PUBLIC_BACKEND_WS}`, ['Authorization', token]);
         socket.current=ws;
       }
 
