@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Realtime Account Monitoring System
 
-First, run the development server:
+An user account dashboard which helps user: view all the devices through which the account is signed in and  sign out from a specific device.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+
+## API Reference
+
+#### LOGIN
+
+```http
+  POST /api/v1/login
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email` | `string` | **Required**.  |
+| `password` | `string` | **Required**.  |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### REGISTER
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```http
+  POST /api/v1/regsiter
+```
 
-## Learn More
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `email`      | `string` | **Required**.  |
+| `password`      | `string` | **Required**.  |
 
-To learn more about Next.js, take a look at the following resources:
+#### FETCH ALL THE LOGGED IN DEVIC DETAILS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```http
+  GET /api/v1/fetch
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `userId`      | `string` | **Required**.  |
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### WEBSOCKET connection
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```ws
+  ws /
+```
+
+
+
+| middleware | desc  |   
+| :-------- | :------- | 
+| `verifyTokenSocket`      | `verifies the token sent in the sec-websocket-protocol header` | 
+
+```ws
+  *Date structure used to store the user login details*
+  {
+    "32411293847" /**userId**/:{
+        "678582540245":{
+            con: /**websocket connection obj**/
+        }
+        "664582540245" /**loginId**/:{
+            con: /**websocket connection obj**/
+        }
+    }
+    ...
+  }
+```
+
+
+
+
+
+
+
+## Run Locally
+
+### Backend
+
+Clone the project
+
+```bash
+  git clone https://github.com/programming-warrior/AccountMonitoringSystem-backend.git
+```
+
+Go to the project directory
+
+```bash
+  cd AccountMonitoringSystem-backend
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+Transpile the typescript code
+
+```bash
+  npx tsc
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+### Client
+
+Clone the project
+
+```bash
+  https://github.com/programming-warrior/AccountMonitoringSystem-client.git
+```
+
+Go to the project directory
+
+```bash
+  cd AccountMonitoringSystem-client
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
+## Demo
+
+url: https://account-monitoring-system-client.vercel.app
+
