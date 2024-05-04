@@ -85,6 +85,10 @@ export default function Dashboard() {
   }, [details])
 
 
+  useEffect(()=>{
+      console.log(details);
+  },[details])
+
 
   const handleClick=useCallback((e: React.MouseEvent<HTMLButtonElement>)=>{
     const target=e.target as HTMLElement;
