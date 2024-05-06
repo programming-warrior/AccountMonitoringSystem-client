@@ -17,7 +17,7 @@ const LoginPage = () => {
         // const browserDetails={
         //   platform:navigator.,
         // }
-        const res=await axios.post('http://localhost:8000/api/v1/login',{
+        const res=await axios.post(`${process.env.NEXT_BACKEND_URL}/api/v1/login`,{
             email,
             password
         },{
